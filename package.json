@@ -15,6 +15,64 @@
   "activationEvents": [
     "*"
   ],
+  "contributes": {
+    "configuration": {
+      "title": "Yet Another Clock",
+      "properties": {
+        "yaclock.prefix": {
+          "description": "String shown in front of the time.",
+          "type": "string",
+          "default": "⏰"
+        },
+        "yaclock.postfix": {
+          "description": "String shown after the time.",
+          "type": "string",
+          "default": ""
+        },
+        "yaclock.showSecond": {
+          "description": "Display the time with seconds.",
+          "type": "boolean",
+          "default": false
+        },
+        "yaclock.flash": {
+          "description": "Flash the time separators",
+          "type": "boolean",
+          "default": false
+        },
+        "yaclock.hour12": {
+          "description": "Use a 12-hour clock",
+          "type": "boolean",
+          "default": false
+        },
+        "yaclock.showDay": {
+          "description": "Show the day of the week.",
+          "type": "boolean",
+          "default": false
+        },
+        "yaclock.showDate": {
+          "description": "Show date.",
+          "type": "boolean",
+          "default": false
+        },
+        "yaclock.ampm": {
+          "description": "Show AM/PM. Will be ignored if in 24 hrs mode.",
+          "type": "boolean",
+          "default": false
+        },
+        "yaclock.position": {
+          "description": "Position in the status bar.",
+          "type": "string",
+          "enum": ["left", "right"],
+          "default": "right"
+        },
+        "yaclock.priority": {
+          "description": "Priority. The bigger value, the clock will be closer to the left edge. ",
+          "type": "number",
+          "default": 10
+        }
+      }
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/jameslan/vscode-yaclock.git"
