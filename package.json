@@ -15,7 +15,7 @@
   "activationEvents": [
     "*"
   ],
-  "publisher": "james-lan",
+  "publisher": "jameslan",
   "icon": "images/icon.png",
   "contributes": {
     "configuration": {
@@ -82,6 +82,8 @@
     "type": "git",
     "url": "https://github.com/jameslan/vscode-yaclock.git"
   },
+  "bugs": "https://github.com/jameslan/vscode-yaclock/issues",
+  "homepage": "https://github.com/jameslan/vscode-yaclock",
   "author": "James Lan <jameslan@gmail.com>",
   "license": "MIT",
   "devDependencies": {
