@@ -6,11 +6,11 @@ function rendererGen() : [(time: Date) => string, boolean] {
     const prefix = config.get<string>('prefix');
     const postfix = config.get<string>('postfix');
     const hour12 = config.get<boolean>('hour12');
-    const showAmPm = hour12 && config.get<boolean>('ampm');
+    const showAmPm = hour12 && config.get<boolean>('showAmPm');
     const showDate = config.get<boolean>('showDate');
     const showDay = config.get<boolean>('showDay');
     const showSecond = config.get<boolean>('showSecond');
-    const flash = config.get<boolean>('flash');
+    const flash = config.get<boolean>('flashTimeSeparator');
     let showSeparator = true;
 
     return [

@@ -2,19 +2,21 @@
   "name": "yaclock",
   "version": "1.0.0",
   "displayName": "Clock",
-  "description": "Yet Another Clock for Visual Studio Code",
+  "description": "Yet Another Clock for Visual Studio Code in the status bar",
   "main": "out/extension.js",
   "scripts": {
     "build": "tsc -p .",
     "vscode:prepublish": "npm run build"
   },
-  "extensionKind": "ui",
+  "extensionKind": ["ui"],
   "engines": {
     "vscode": "^1.32.0"
   },
   "activationEvents": [
     "*"
   ],
+  "publisher": "james-lan",
+  "icon": "images/icon.png",
   "contributes": {
     "configuration": {
       "title": "Yet Another Clock",
@@ -34,7 +36,7 @@
           "type": "boolean",
           "default": false
         },
-        "yaclock.flash": {
+        "yaclock.flashTimeSeparator": {
           "description": "Flash the time separators",
           "type": "boolean",
           "default": false
@@ -54,7 +56,7 @@
           "type": "boolean",
           "default": false
         },
-        "yaclock.ampm": {
+        "yaclock.showAmPm": {
           "description": "Show AM/PM. Will be ignored if in 24 hrs mode.",
           "type": "boolean",
           "default": false
@@ -62,7 +64,10 @@
         "yaclock.position": {
           "description": "Position in the status bar.",
           "type": "string",
-          "enum": ["left", "right"],
+          "enum": [
+            "left",
+            "right"
+          ],
           "default": "right"
         },
         "yaclock.priority": {
@@ -80,7 +85,7 @@
   "author": "James Lan <jameslan@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/vscode": "^1.40.0",
+    "@types/vscode": "^1.32.0",
     "typescript": "^3.7.2"
   }
 }
