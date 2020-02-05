@@ -1,7 +1,13 @@
-import * as vscode from 'vscode'
+import * as vscode from 'vscode';
+
+interface Renderer {
+    renderText(time: Date): string;
+    renderTooltip(time: Date): string;
+    expireInSeconds: boolean;
+}
 
 // returns the render, as well as a flag indicating if it needs to be called on every second
-function rendererGen() : [(time: Date) => string, boolean] {
+function rendererGen(): Renderer {
     const config = vscode.workspace.getConfiguration('yaclock');
     const prefix = config.get<string>('prefix');
     const postfix = config.get<string>('postfix');
@@ -13,8 +19,8 @@ function rendererGen() : [(time: Date) => string, boolean] {
     const flash = config.get<boolean>('flashTimeSeparator');
     let showSeparator = true;
 
-    return [
-        (time: Date) => {
+    return {
+        renderText(time: Date) {
             let options: Intl.DateTimeFormatOptions = {};
             if (showDate) {
                 options = { day: 'numeric', month: 'short' };
@@ -38,8 +44,13 @@ function rendererGen() : [(time: Date) => string, boolean] {
 
             return `${prefix}${day}${hour}${separator}${minute}${second}${ampm}${postfix}`
         },
-        showSecond || flash || false,
-    ];
+
+        renderTooltip(time: Date) {
+            return time.toLocaleString();
+        },
+
+        expireInSeconds: showSecond || flash || false,
+    };
 }
 
 function createClock(): vscode.StatusBarItem {
@@ -49,23 +60,25 @@ function createClock(): vscode.StatusBarItem {
         config.get<number>('priority'));
 }
 
-export function activate({ subscriptions }: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext) {
     let clockItem: vscode.StatusBarItem;
-    let renderer: (time: Date) => string;
-    let refreshInSeconds: boolean;
+    let renderer: Renderer;
     let schedule: number;
+
+    let subscriptions = context.subscriptions
 
     const update = () => {
         const time = new Date();
-        const interval = refreshInSeconds ? 1000 - time.getMilliseconds() : 60000 - time.getMilliseconds() - time.getSeconds() * 1000;
+        const interval = renderer.expireInSeconds ? 1000 - time.getMilliseconds() : 60000 - time.getMilliseconds() - time.getSeconds() * 1000;
         schedule = setTimeout(update, interval);
 
-        clockItem.text = renderer(time);
+        clockItem.text = renderer.renderText(time);
+        clockItem.tooltip = renderer.renderTooltip(time);
     }
 
     const setup = () => {
         clockItem = createClock();
-        [ renderer, refreshInSeconds ] = rendererGen();
+        renderer = rendererGen();
         subscriptions.push(clockItem);
         clockItem.show();
     };

@@ -1,11 +1,11 @@
 {
   "name": "yaclock",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "displayName": "Clock",
   "description": "Yet Another Clock for Visual Studio Code in the status bar",
   "main": "out/extension.js",
   "scripts": {
-    "build": "tsc -p .",
+    "build": "npx tsc -p .",
     "vscode:prepublish": "npm run build"
   },
   "extensionKind": ["ui"],

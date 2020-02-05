@@ -1,24 +1,32 @@
 # Yet Another Clock
 
+Display a digital clock in the status bar of VisualStudio Code.
+Best for full-screen window as the system clock may be hidden.
+
 ![blue status bar](images/screenshot.blue.png)
 ![light status bar](images/screenshot.light.png)
 ![dark status bar](images/screenshot.dark.png)
+
+[Release Notes](https://github.com/jameslan/vscode-yaclock/releases)
 
 ## Features
 
 - Works locally. Do not require to be installed into remote host when using VSCode Remote.
 - Simple config. Do not need to learn how to format date time to string in javascript.
 Checkbox rules all!
-- Adaptive refresh rate. Refresh every second only when needed (second is displayed or
-the separator is flashing), otherwise refresh every minute at 0 second.
+- Adaptive refresh rate. Refresh at the beginning of every second only when needed
+(second is displayed or the separator is flashing),
+otherwise refresh at the beginning of 0 second every minute.
 - No window reload required for any config change.
 - Standing out. With a configurable colorful emoji (prefix or postfix),
 you could find the time with just a glimpse.
+- Show full date time as tool tip of the clock status bar item.
+Note that the tooltip appears only when the editor window is focused / activated.
 
 ## Tips
+
 - To add [Standard Octicons](https://code.visualstudio.com/api/references/icons-in-labels) into
 prefix or postfix, use `$()`, such as `$(clock)`
-
 
 ## Configuration
 
