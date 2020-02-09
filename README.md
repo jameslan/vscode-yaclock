@@ -1,5 +1,8 @@
 # Yet Another Clock
 
+![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/jameslan.yaclock)
+![Visual Studio Marketplace Installs](https://img.shields.io/visual-studio-marketplace/i/jameslan.yaclock)
+
 Display a digital clock in the status bar of VisualStudio Code.
 Best for full-screen window as the system clock may be hidden.
 
