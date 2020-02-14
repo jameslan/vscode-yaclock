@@ -3,6 +3,7 @@ import * as vscode from 'vscode';
 export class Clock {
     clockItem: vscode.StatusBarItem;
     schedule: number;
+
     // configs
     expireInSeconds: boolean;
     prefix: string;
@@ -14,6 +15,7 @@ export class Clock {
     showSecond: boolean;
     flash: boolean;
     showSeparator: boolean;
+
     constructor() {
         const config = vscode.workspace.getConfiguration('yaclock');
         this.prefix = config.get('prefix', '');
@@ -37,10 +39,12 @@ export class Clock {
         this.update = this.update.bind(this);
         this.schedule = setTimeout(this.update, 0);
     }
+
     dispose() {
         this.clockItem.dispose();
         clearTimeout(this.schedule);
     }
+
     renderText(time: Date) {
         let options: Intl.DateTimeFormatOptions = {};
         if (this.showDate) {
@@ -60,9 +64,11 @@ export class Clock {
         const ampm = this.showAmPm ? (time.getHours() < 12 ? ' AM' : ' PM') : '';
         this.clockItem.text = `${this.prefix}${day}${hour}${separator}${minute}${second}${ampm}${this.postfix}`;
     }
+
     renderTooltip(time: Date) {
         this.clockItem.tooltip = time.toLocaleString();
     }
+
     update() {
         const time = new Date();
         const interval = this.expireInSeconds ? 1000 - time.getMilliseconds() : 60000 - time.getMilliseconds() - time.getSeconds() * 1000;

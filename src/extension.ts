@@ -6,15 +6,19 @@ export function activate(context: vscode.ExtensionContext) {
 
     let subscriptions = context.subscriptions
 
-    clock = new Clock();
-    subscriptions.push(clock);
+    const createClock = () => {
+        clock = new Clock();
+        subscriptions.push(clock);
+    };
+
+    createClock();
 
     vscode.workspace.onDidChangeConfiguration(e => {
         if (!e.affectsConfiguration('yaclock')) {
             return;
         }
+
         clock.dispose();
-        clock = new Clock();
-        subscriptions.push(clock);
+        createClock();
     });
 }
