@@ -48,6 +48,11 @@
           "type": "boolean",
           "default": false
         },
+        "yaclock.padHour24": {
+          "description": "Zero-pad one-digit hours in 24 hrs mode.",
+          "type": "boolean",
+          "default": false
+        },
         "yaclock.showDay": {
           "description": "Show the day of the week.",
           "type": "boolean",
