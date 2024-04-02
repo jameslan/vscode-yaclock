@@ -15,7 +15,7 @@
     "vscode": "^1.32.0"
   },
   "activationEvents": [
-    "*"
+    "onStartupFinished"
   ],
   "publisher": "jameslan",
   "icon": "images/icon.png",
