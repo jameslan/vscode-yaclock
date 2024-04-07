@@ -1,6 +1,6 @@
 {
   "name": "yaclock",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "displayName": "Clock",
   "description": "Yet Another Clock for Visual Studio Code in the status bar",
   "main": "out/extension.js",
@@ -15,7 +15,7 @@
     "vscode": "^1.32.0"
   },
   "activationEvents": [
-    "*"
+    "onStartupFinished"
   ],
   "publisher": "jameslan",
   "icon": "images/icon.png",
@@ -45,6 +45,11 @@
         },
         "yaclock.hour12": {
           "description": "Use a 12-hour clock",
+          "type": "boolean",
+          "default": false
+        },
+        "yaclock.padHour24": {
+          "description": "Zero-pad one-digit hours in 24 hrs mode.",
           "type": "boolean",
           "default": false
         },

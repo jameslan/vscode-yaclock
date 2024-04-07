@@ -9,6 +9,7 @@ export class Clock {
     prefix: string;
     postfix: string;
     hour12: boolean;
+    padHour24: boolean;
     showAmPm: boolean;
     showDate: boolean;
     showDay: boolean;
@@ -21,6 +22,7 @@ export class Clock {
         this.prefix = config.get('prefix', '');
         this.postfix = config.get('postfix', '');
         this.hour12 = config.get('hour12', false);
+        this.padHour24 = config.get('padHour24', false);
         this.showAmPm = this.hour12 && config.get('showAmPm', false);
         this.showDate = config.get('showDate', false);
         this.showDay = config.get('showDay', false);
@@ -58,7 +60,12 @@ export class Clock {
         if (this.flash) {
             this.showSeparator = !this.showSeparator;
         }
-        const hour = this.hour12 ? (time.getHours() + 11) % 12 + 1 : time.getHours();
+        let hour: number|string = time.getHours();;
+        if (this.hour12) {
+            hour = (hour + 11) % 12 + 1;
+        } else if (this.padHour24) {
+            hour = hour.toString().padStart(2, '0');
+        }
         const minute = time.getMinutes().toString().padStart(2, '0');
         const second = this.showSecond ? separator + time.getSeconds().toString().padStart(2, '0') : '';
         const ampm = this.showAmPm ? (time.getHours() < 12 ? ' AM' : ' PM') : '';
