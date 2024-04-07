@@ -40,10 +40,15 @@ prefix or postfix, use `$()`, such as `$(clock)`
 |`yaclock.showSecond`|Display the time with seconds.|`false`|
 |`yaclock.flashTimeSeparator`|Flash the time separators|`false`|
 |`yaclock.hour12`|Use a 12-hour clock|`false`|
+|`yaclock.padHour24`|Show the padding 0 for a 24-hour clock|`false`|
 |`yaclock.showDay`|Show the day of the week.|`false`|
 |`yaclock.showDate`|Show date.|`false`|
 |`yaclock.showAmPm`|Show AM/PM. Will be ignored if in 24 hrs mode.|`false`|
 |`yaclock.position`|Position in the status bar.|`right`|
 |`yaclock.priority`|Priority. The bigger value, the clock will be closer to the left edge.|`10`|
+
+## Credit
+Contributors:
+[James Lan](https://github.com/jameslan), [Per Persson](https://github.com/md2perpe)
 
 Icon made by [catkuro](https://www.flaticon.com/authors/catkuro) from [Flaticon](https://www.flaticon.com/)
