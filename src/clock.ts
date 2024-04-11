@@ -60,7 +60,7 @@ export class Clock {
         if (this.flash) {
             this.showSeparator = !this.showSeparator;
         }
-        let hour: number|string = time.getHours();;
+        let hour: number|string = time.getHours();
         if (this.hour12) {
             hour = (hour + 11) % 12 + 1;
         } else if (this.padHour24) {
